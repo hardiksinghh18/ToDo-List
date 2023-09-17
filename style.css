@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Righteous', cursive;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body{
+    background-color: #384152;
+    color: white;
+    font-family: 'Righteous', cursive;
+  font-size: 1.5rem;
+}
+
+.heading{
+    margin: 20px;
+}
+
+#input{
+    width: 40vw;
+    padding:  10px 30px;
+    border-radius: 10px;
+}
+#submit{
+ 
+        height: 38px;
+        width: 72px;
+        border-radius: 10px;
+}
+.task{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+
+}
+
+.task input{
+    padding: 5px;
+    border-radius: 10px;
+    width: 50vw;
+    background-color: #111827;
+    color: white;
+   
+}
+
+header form input{
+    background-color: #20283a;
+    color: white;
+    
+}
+
+input, button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+
+}
+
+.yourTasks{
+    margin: 40px;
+}
+
+.content input{
+    padding: 10px 30px;
+    font-size: 1rem;
+}
+
+.actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+.actions .edit{
+color: #62d7ac;
+}
+
+.actions .delete{
+    color: #ff3a3a;
+}
+
