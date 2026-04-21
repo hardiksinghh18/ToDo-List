@@ -1,52 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html class="dark" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo List</title>
-
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>To-Do Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#283044",
+                      "outline-variant": "#444656",
+                      "primary-fixed": "#dee0ff",
+                      "on-primary-fixed": "#000f5d",
+                      "on-secondary-container": "#ffaa8d",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "surface-bright": "#31394d",
+                      "on-background": "#dae2fd",
+                      "surface-tint": "#bbc3ff",
+                      "on-tertiary": "#003912",
+                      "tertiary-container": "#007f32",
+                      "on-error": "#690005",
+                      "secondary-fixed-dim": "#ffb59c",
+                      "secondary-container": "#8e2c01",
+                      "surface": "#0b1326",
+                      "on-surface-variant": "#c5c5d9",
+                      "secondary": "#ffb59c",
+                      "outline": "#8e8fa2",
+                      "on-primary": "#001d93",
+                      "inverse-primary": "#2848ee",
+                      "secondary-fixed": "#ffdbcf",
+                      "tertiary-fixed-dim": "#3ce36a",
+                      "surface-container-low": "#131b2e",
+                      "error-container": "#93000a",
+                      "primary-fixed-dim": "#bbc3ff",
+                      "surface-container-lowest": "#060e20",
+                      "on-primary-container": "#f1f0ff",
+                      "inverse-surface": "#dae2fd",
+                      "on-tertiary-fixed-variant": "#00531e",
+                      "surface-variant": "#2d3449",
+                      "on-primary-fixed-variant": "#002ccd",
+                      "tertiary": "#3ce36a",
+                      "primary-container": "#3d5afe",
+                      "primary": "#bbc3ff",
+                      "surface-container-high": "#222a3d",
+                      "on-secondary": "#5c1a00",
+                      "on-secondary-fixed-variant": "#822800",
+                      "surface-dim": "#0b1326",
+                      "on-secondary-fixed": "#380c00",
+                      "surface-container-highest": "#2d3449",
+                      "on-tertiary-container": "#c7ffc7",
+                      "on-surface": "#dae2fd",
+                      "background": "#0b1326",
+                      "on-tertiary-fixed": "#002108",
+                      "surface-container": "#171f33",
+                      "tertiary-fixed": "#69ff87"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1326;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(61, 90, 254, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(142, 44, 1, 0.1) 0px, transparent 50%);
+            min-height: 100vh;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(187, 195, 255, 0.2);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(187, 195, 255, 0.4);
+        }
+    </style>
 </head>
-
-<body>
-    <h1 class="heading flex">ToDo List</h1>
-<header class="flex">
-    
-        <form id="todoform">
-            <input 
-            id="input" 
-            type="text" 
-            placeholder="What are your plans today ??" />
-            <input 
-            id="submit" 
-            type="submit" 
-            value="Add Task" />
-        </form>
-  
-    </header>
-
-    <section>
-<!-- <div class="flex yourTasks">
-
-    <h3 >Your Tasks</h3>
-</div> -->
-    <div id="tasks">
-
-        <!-- <div class="task ">
-            <div class="content">
-                <input type="text" class="text" value="task" readonly >
+<body class="custom-scrollbar overflow-x-hidden">
+    <div class="min-h-screen flex flex-col lg:flex-row">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full lg:w-72 glass-panel border-r border-white/5 p-8 flex flex-col gap-10 z-10">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(61,90,254,0.4)]">
+                    <span class="material-symbols-outlined text-indigo-50">task_alt</span>
+                </div>
+                <h1 class="text-xl font-black text-indigo-50 tracking-tight">TaskFlow</h1>
             </div>
-            <div class="actions">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-            </div>
-        </div> -->
+            
+            <nav class="flex flex-col gap-2">
+                <button id="filter-all" class="nav-btn group active flex items-center gap-4 px-4 py-3 rounded-xl bg-white/5 text-primary border border-white/5 transition-all">
+                    <span class="material-symbols-outlined transition-transform group-hover:scale-110">list_alt</span>
+                    <span class="font-bold text-sm tracking-wide">All Tasks</span>
+                </button>
+                <button id="filter-pending" class="nav-btn group flex items-center gap-4 px-4 py-3 rounded-xl text-indigo-300/60 hover:text-indigo-50 transition-all">
+                    <span class="material-symbols-outlined transition-transform group-hover:scale-110 text-xl">pending_actions</span>
+                    <span class="font-bold text-sm tracking-wide">Pending</span>
+                </button>
+                <button id="filter-completed" class="nav-btn group flex items-center gap-4 px-4 py-3 rounded-xl text-indigo-300/60 hover:text-indigo-50 transition-all">
+                    <span class="material-symbols-outlined transition-transform group-hover:scale-110 text-xl">task_alt</span>
+                    <span class="font-bold text-sm tracking-wide">Completed</span>
+                </button>
+            </nav>
+        </aside>
 
+        <!-- Main Content Area -->
+        <main class="flex-1 p-6 lg:p-12">
+            <div class="max-w-6xl mx-auto flex flex-col gap-12">
+                <!-- Header -->
+                <header class="flex flex-col gap-2">
+                    <h2 class="text-4xl lg:text-5xl font-black text-indigo-50 tracking-tighter" id="greeting">Good morning</h2>
+                    <p class="text-indigo-300/60 font-medium tracking-wide uppercase text-xs" id="current-date">October 23, 2023</p>
+                </header>
+
+                <div class="grid grid-cols-12 gap-10">
+                    <!-- Task List Section -->
+                    <section class="col-span-12 lg:col-span-8 flex flex-col gap-8">
+                        <!-- Task Input -->
+                        <div class="glass-panel p-2 rounded-3xl border border-white/10 flex flex-col sm:flex-row gap-2">
+                            <input id="todo-input" class="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-indigo-300/30 px-6 py-4" placeholder="What needs to be done?" type="text"/>
+                            <div class="flex items-center gap-2 p-2">
+                                <select id="priority-select" class="bg-surface-container-high text-indigo-50 border-none rounded-xl focus:ring-primary text-xs font-bold uppercase tracking-widest px-4 py-2">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                                <button id="add-task-btn" class="bg-primary-container hover:bg-primary-container/80 text-white px-6 py-4 rounded-2xl flex items-center justify-center group transition-all">
+                                    <span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between px-2">
+                            <h3 class="text-sm font-black uppercase tracking-[0.2em] text-indigo-300/50">Active Focus</h3>
+                            <span class="text-[10px] font-black text-indigo-300/30 uppercase tracking-widest" id="task-count">0 Tasks</span>
+                        </div>
+
+                        <!-- Tasks list -->
+                        <div id="todo-list" class="flex flex-col gap-4">
+                            <!-- Tasks will be injected here -->
+                        </div>
+                    </section>
+
+                    <!-- Stats Section -->
+                    <aside class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+                        <div class="glass-panel p-8 rounded-[2rem] border border-white/5 flex flex-col items-center gap-8 relative overflow-hidden group">
+                            <!-- Background glow -->
+                            <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 blur-[60px] rounded-full"></div>
+                            
+                            <h3 class="text-sm font-black uppercase tracking-[0.2em] text-indigo-300/50 self-start">Productivity</h3>
+                            
+                            <!-- Circular Progress -->
+                            <div class="relative w-48 h-48 flex items-center justify-center">
+                                <svg class="w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+                                    <circle class="text-white/5" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="6"></circle>
+                                    <circle id="progress-circle" class="text-primary drop-shadow-[0_0_8px_rgba(187,195,255,0.5)] transition-all duration-1000" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="282.7" stroke-dashoffset="282.7" stroke-linecap="round" stroke-width="8"></circle>
+                                </svg>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                    <span class="text-4xl font-black text-indigo-50" id="progress-text">0%</span>
+                                    <span class="text-[10px] uppercase tracking-widest text-indigo-300/60 font-bold">Progress</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-6 w-full">
+                                <div class="flex justify-between items-end border-b border-white/5 pb-4">
+                                    <div>
+                                        <div class="text-[10px] uppercase tracking-widest text-indigo-300/60 font-black mb-1">Status</div>
+                                        <div class="text-2xl font-bold text-indigo-50" id="stats-ratio">0/0 <span class="text-indigo-300/30 text-lg">Done</span></div>
+                                    </div>
+                                    <span class="material-symbols-outlined text-tertiary">trending_up</span>
+                                </div>
+                                <div id="overdue-card" class="flex justify-between items-center bg-indigo-300/5 rounded-2xl p-4 group-hover:bg-indigo-300/10 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                                        <span class="text-xs font-bold text-indigo-100 uppercase tracking-wider">Pending</span>
+                                    </div>
+                                    <span class="text-sm font-bold text-secondary" id="pending-count">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Daily Streak Card -->
+                        <div class="bg-gradient-to-br from-secondary-container/40 to-secondary-container/10 p-6 rounded-[2rem] border border-secondary/10 flex flex-col gap-4 relative overflow-hidden">
+                            <span class="material-symbols-outlined text-4xl text-secondary/30 absolute -bottom-2 -right-2 scale-150 opacity-20">bolt</span>
+                            <div class="text-xs font-black uppercase tracking-widest text-secondary-fixed-dim">Daily Goals</div>
+                            <div class="text-3xl font-black text-indigo-50" id="streak-count">Task Master</div>
+                            <div class="text-[10px] text-indigo-300/60 leading-relaxed">Boost your productivity by completing tasks early. Small wins lead to big goals!</div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </main>
     </div>
-</section>
     <script src="script.js"></script>
 </body>
-
 </html>
