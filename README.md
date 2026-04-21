@@ -1,69 +1,52 @@
-# ToDo List Application
+# TaskFlow - Premium To-Do Dashboard
 
-A simple, modern ToDo list application built with React and Vite. This application allows users to add, delete, and mark tasks as complete.
+TaskFlow is a modern, high-fidelity To-Do list application designed with a focus on premium aesthetics and smooth user experience. It features a sleek glassmorphism UI, real-time productivity tracking, and persistent data storage.
 
-## Features
+![TaskFlow Preview](https://via.placeholder.com/800x450/0b1326/ffffff?text=TaskFlow+Dashboard+Preview)
 
-- **Add Tasks**: Quickly add new tasks to your list.
-- **Delete Tasks**: Remove tasks you no longer need.
-- **Mark as Complete**: Toggle the completion status of tasks.
-- **Persisted Data**: Tasks are saved to `localStorage`, so they persist across page refreshes.
-- **Responsive Design**: Clean, modern UI that works on different screen sizes.
+## ✨ Features
 
-## Getting Started
+- **Premium UI/UX**: Designed with a "Prism Aura" theme featuring deep indigo tones, glassmorphism effects, and vibrant accents.
+- **Priority Management**: Categorize your tasks into Low, Medium, and High priority levels with color-coded badges.
+- **Productivity Tracking**: Visualize your progress with a real-time circular progress chart and daily stats.
+- **Task Management**: Simple and intuitive Add, Edit, Delete, and Complete actions.
+- **Persistent Storage**: Uses `localStorage` to ensure your tasks are saved locally on your device across sessions.
+- **Smart Greetings**: Dynamically adjusts greetings based on the time of day.
+- **Filtering**: Quickly toggle between All, Pending, and Completed tasks via the sidebar filters.
+- **Modern Tech Stack**: Built entirely with Vanilla JavaScript and Tailwind CSS for maximum performance and no build steps.
 
-### Prerequisites
+## 🚀 Getting Started
 
-- [Node.js](https://nodejs.org/) (v14 or higher recommended)
-- [npm](https://www.npmjs.com/) (usually comes with Node.js)
+The project is a pure static application, meaning it requires no installation or build process.
 
-### Installation
-
-1. Clone the repository:
+### Running Locally
+1. **Directly**: Simply open the `index.html` file in any modern web browser.
+2. **Local Server (Recommended)**: Use a tool like VS Code's "Live Server" or run a simple Python server:
    ```bash
-   git clone <repository-url>
-   cd ToDo-List
+   python -m http.server 8000
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## 🛠️ Built With
 
-### Usage
+- **HTML5**: Semantic structure.
+- **Tailwind CSS**: Modern styling and layout (delivered via CDN).
+- **Vanilla JavaScript**: Core logic, task management, and data persistence.
+- **Google Fonts**: Inter for high-quality typography.
+- **Material Symbols**: Intuitive iconography.
 
-1. Start the development server:
-   ```bash
-   npm run dev
-   ```
+## 📂 Project Structure
 
-2. Open your browser and navigate to `http://localhost:5173` (or the port shown in your terminal).
-
-3. Start adding and managing your tasks!
-
-## Project Structure
-
-```
+```text
 ToDo-List/
-├── src/
-│   ├── components/
-│   │   ├── TodoForm.jsx        # Form for adding new tasks
-│   │   ├── TodoItem.jsx        # Individual task display
-│   │   └── TodoList.jsx        # List container
-│   ├── App.jsx                 # Main application component
-│   ├── index.css               # Global styles
-│   └── main.jsx                # Entry point
-├── index.html                  # HTML template
-├── package.json                # Project dependencies and scripts
-└── vite.config.js              # Vite configuration
+├── index.html      # Main application structure and UI
+├── script.js       # Core application logic and task management
+├── style.css       # Custom CSS overrides and animations
+└── README.md       # Project documentation
 ```
 
-## Technologies Used
+## 📜 License
 
-- **React**: A JavaScript library for building user interfaces.
-- **Vite**: A fast build tool and development server.
-- **CSS**: For styling and layout.
+This project is open-source and available under the [MIT License](LICENSE).
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+---
+Developed with ❤️ for a better productivity experience.
