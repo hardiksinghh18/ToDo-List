@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>To-Do Dashboard</title>
+    <title>TaskFlow</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -108,10 +108,10 @@
         }
     </style>
 </head>
-<body class="custom-scrollbar overflow-x-hidden">
-    <div class="min-h-screen flex flex-col lg:flex-row">
-        <!-- Sidebar Navigation -->
-        <aside class="w-full lg:w-72 glass-panel border-r border-white/5 p-8 flex flex-col gap-10 z-10">
+<body class="custom-scrollbar">
+    <div class="min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
+        <!-- Sidebar/Top Navigation -->
+        <aside class="w-full lg:w-72 glass-panel border-b lg:border-r border-white/5 p-4 lg:p-8 flex flex-col items-center sm:flex-row sm:justify-between lg:flex-col lg:justify-start gap-4 lg:gap-10 z-10 sticky top-0">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(61,90,254,0.4)]">
                     <span class="material-symbols-outlined text-indigo-50">task_alt</span>
@@ -119,37 +119,39 @@
                 <h1 class="text-xl font-black text-indigo-50 tracking-tight">TaskFlow</h1>
             </div>
             
-            <nav class="flex flex-col gap-2">
-                <button id="filter-all" class="nav-btn group active flex items-center gap-4 px-4 py-3 rounded-xl bg-white/5 text-primary border border-white/5 transition-all">
+            <nav class="flex flex-row lg:flex-col gap-2 w-full sm:w-auto lg:w-full overflow-x-auto pb-2 lg:pb-0 custom-scrollbar">
+                <button id="filter-all" class="nav-btn group active flex items-center gap-4 px-4 py-2 lg:py-3 rounded-xl bg-white/5 text-primary border border-white/5 transition-all whitespace-nowrap">
                     <span class="material-symbols-outlined transition-transform group-hover:scale-110">list_alt</span>
-                    <span class="font-bold text-sm tracking-wide">All Tasks</span>
+                    <span class="font-bold text-sm tracking-wide">All</span>
                 </button>
-                <button id="filter-pending" class="nav-btn group flex items-center gap-4 px-4 py-3 rounded-xl text-indigo-300/60 hover:text-indigo-50 transition-all">
+                <button id="filter-pending" class="nav-btn group flex items-center gap-4 px-4 py-2 lg:py-3 rounded-xl text-indigo-300/60 hover:text-indigo-50 transition-all whitespace-nowrap">
                     <span class="material-symbols-outlined transition-transform group-hover:scale-110 text-xl">pending_actions</span>
-                    <span class="font-bold text-sm tracking-wide">Pending</span>
+                    <span class="font-bold text-sm tracking-wide sm:hidden lg:inline">Pending</span>
+                    <span class="font-bold text-sm tracking-wide hidden sm:inline lg:hidden">Pending</span>
                 </button>
-                <button id="filter-completed" class="nav-btn group flex items-center gap-4 px-4 py-3 rounded-xl text-indigo-300/60 hover:text-indigo-50 transition-all">
+                <button id="filter-completed" class="nav-btn group flex items-center gap-4 px-4 py-2 lg:py-3 rounded-xl text-indigo-300/60 hover:text-indigo-50 transition-all whitespace-nowrap">
                     <span class="material-symbols-outlined transition-transform group-hover:scale-110 text-xl">task_alt</span>
-                    <span class="font-bold text-sm tracking-wide">Completed</span>
+                    <span class="font-bold text-sm tracking-wide sm:hidden lg:inline">Completed</span>
+                    <span class="font-bold text-sm tracking-wide hidden sm:inline lg:hidden">Done</span>
                 </button>
             </nav>
         </aside>
 
         <!-- Main Content Area -->
-        <main class="flex-1 p-6 lg:p-12">
-            <div class="max-w-6xl mx-auto flex flex-col gap-12">
+        <main class="flex-1 p-4 lg:p-12 w-full">
+            <div class="max-w-full lg:max-w-6xl mx-auto flex flex-col gap-8 lg:gap-12">
                 <!-- Header -->
                 <header class="flex flex-col gap-2">
                     <h2 class="text-4xl lg:text-5xl font-black text-indigo-50 tracking-tighter" id="greeting">Good morning</h2>
                     <p class="text-indigo-300/60 font-medium tracking-wide uppercase text-xs" id="current-date">October 23, 2023</p>
                 </header>
 
-                <div class="grid grid-cols-12 gap-10">
+                <div class="grid grid-cols-12 gap-6 lg:gap-10">
                     <!-- Task List Section -->
                     <section class="col-span-12 lg:col-span-8 flex flex-col gap-8">
                         <!-- Task Input -->
                         <div class="glass-panel p-2 rounded-3xl border border-white/10 flex flex-col sm:flex-row gap-2">
-                            <input id="todo-input" class="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-indigo-300/30 px-6 py-4" placeholder="What needs to be done?" type="text"/>
+                            <input id="todo-input" class="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-indigo-300/30 px-4 sm:px-6 py-3 sm:py-4" placeholder="What needs to be done?" type="text"/>
                             <div class="flex items-center gap-2 p-2">
                                 <select id="priority-select" class="bg-surface-container-high text-indigo-50 border-none rounded-xl focus:ring-primary text-xs font-bold uppercase tracking-widest px-4 py-2">
                                     <option value="low">Low</option>

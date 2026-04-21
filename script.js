@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createTaskElement(task) {
         const div = document.createElement('div');
-        div.className = "group relative flex items-center gap-6 p-5 rounded-2xl bg-surface-container-low/40 hover:bg-surface-container-high/60 transition-all duration-300 border border-white/5 backdrop-blur-md";
+        div.className = "group relative flex items-center gap-2 sm:gap-6 p-3 sm:p-5 rounded-2xl bg-surface-container-low/40 hover:bg-surface-container-high/60 transition-all duration-300 border border-white/5 backdrop-blur-md";
         
         const priorityColors = {
             low: "bg-primary border-primary",
@@ -159,21 +159,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="material-symbols-outlined absolute top-0 left-0 text-on-primary pointer-events-none opacity-0 peer-checked:opacity-100 text-lg transition-opacity flex items-center justify-center w-full h-full">check</span>
             </div>
             <div class="flex-1 flex flex-col gap-1 min-w-0">
-                <span class="text-lg font-medium text-indigo-50 transition-all truncate ${task.completed ? 'line-through text-indigo-300/30' : ''}">
+                <span class="text-base sm:text-lg font-medium text-indigo-50 transition-all truncate ${task.completed ? 'line-through text-indigo-300/30' : ''}">
                     ${task.text}
                 </span>
-                <div class="flex items-center gap-4">
-                    <span class="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-indigo-300/40">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-4">
+                    <span class="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-indigo-300/40">
                         <span class="material-symbols-outlined text-xs">calendar_today</span>
-                        Added ${task.createdAt}
+                        ${task.createdAt}
                     </span>
-                    <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full border ${priorityBadge[task.priority]}">
+                    <div class="flex items-center gap-1 px-1.5 py-0.5 rounded-full border ${priorityBadge[task.priority]}">
                         <span class="w-1 h-1 rounded-full ${task.priority === 'high' ? 'bg-secondary shadow-[0_0_8px_rgba(255,181,156,0.6)]' : 'bg-primary'}"></span>
-                        <span class="text-[10px] font-bold tracking-wider uppercase">${task.priority} Priority</span>
+                        <span class="text-[9px] sm:text-[10px] font-bold tracking-wider uppercase">${task.priority}</span>
                     </div>
                 </div>
             </div>
-            <div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="flex gap-0.5 sm:gap-1 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
                 <button class="edit-btn p-2 hover:bg-white/10 rounded-lg text-indigo-300 transition-colors">
                     <span class="material-symbols-outlined text-xl">edit</span>
                 </button>
